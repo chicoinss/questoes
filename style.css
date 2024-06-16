@@ -1,0 +1,54 @@
+:root {
+  --cor-fundo: #f0f8ff;
+  --cor-principal: #ffffff;
+  --cor-secundaria: #add8e6;
+  --cor-destaque: #4682b4;
+  --cor-texto: #000000;
+  --cor-botao: #4682b4;
+  --cor-botao-texto: #ffffff;
+  --cor-botao-hover: #4169e1;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.caixa-principal {
+  background-color: var(--cor-principal);
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: var(--cor-destaque);
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: var(--cor-botao);
+  color: var(--cor-botao-texto);
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: var(--cor-botao-hover);
+}
+
+.caixa-resultado {
+  margin-top: 20px;
+}
