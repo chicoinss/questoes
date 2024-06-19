@@ -44,18 +44,23 @@ const perguntas = [
 ];
 
 let atual = 0;
-let perguntaAtual;
-let historiaFinal = "";
+let pontuacao = 0;
 
 function mostraPergunta() {
-    if (atual >= perguntas.length) {
-        mostraResultado();
-        return;
-    }
-    perguntaAtual = perguntas[atual];
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
-    mostraAlternativas();
+  if (atual >= perguntas.length) {
+    mostraResultado();
+    return;
+  }
+  const perguntaAtual = perguntas[atual];
+  caixaPerguntas.textContent = perguntaAtual.enunciado;
+  caixaAlternativas.textContent = "";
+
+  perguntaAtual.alternativas.forEach(alternativa => {
+    const botaoAlternativas = document.createElement("button");
+    botaoAlternativas.textContent = alternativa.texto;
+    botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa, botaoAlternativas));
+    caixaAlternativas.appendChild(botaoAlternativas);
+  });
 }
 
 function respostaSelecionada(alternativa, botao) {
@@ -77,7 +82,5 @@ function mostraResultado() {
   textoResultado.textContent = `Você acertou ${pontuacao} de ${perguntas.length} perguntas.`;
   caixaAlternativas.textContent = "";
 }
-
-mostraPergunta();
 
 mostraPergunta();
