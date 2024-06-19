@@ -58,26 +58,26 @@ function mostraPergunta() {
     mostraAlternativas();
 }
 
-function mostraAlternativas(){
-    for(const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
-        caixaAlternativas.appendChild(botaoAlternativas);
-    }
-}
+function respostaSelecionada(alternativa, botao) {
+  if (alternativa.correta) {
+    pontuacao++;
+    botao.style.backgroundColor = "green";
+  } else {
+    botao.style.backgroundColor = "red";
+  }
 
-function respostaSelecionada(opcaoSelecionada) {
-    const afirmacoes = opcaoSelecionada.afirmacao;
-    historiaFinal += afirmacoes + " ";
+  setTimeout(() => {
     atual++;
     mostraPergunta();
+  }, 1000); // Espera 1 segundo antes de ir para a próxima pergunta
 }
 
 function mostraResultado() {
-    caixaPerguntas.textContent = "Em 2049...";
-    textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = "";
+  caixaPerguntas.textContent = "Resultado:";
+  textoResultado.textContent = `Você acertou ${pontuacao} de ${perguntas.length} perguntas.`;
+  caixaAlternativas.textContent = "";
 }
+
+mostraPergunta();
 
 mostraPergunta();
